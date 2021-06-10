@@ -14,15 +14,9 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const data = Promise.all([this.getPokemon(), this.getPokemon()]);
-    const position = getRandomNumber(1, 0);
-    this.setState({
-      pokemons: data,
-      position,
-    });
+    console.log("componentDidMount");
+    this.getPokemon();
   }
-
-  componentDidUpdate(prevProps, prevState) {}
 
   formatPokemon = (data) => {
     return {
@@ -44,28 +38,16 @@ class App extends React.Component {
 
   getPokemon = async () => {
     const id = getRandomNumber(898);
-
-    const response = fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        return formatPokemon(data);
-      });
-
-    const data = this.formatPokemon(await response.json());
-    const position = getRandomNumber(1, 0);
-
+    const position = getRandomNumber(1,0)
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const dataJson = await response.json();
+    const data = this.formatPokemon(dataJson);
     this.setState({
-      pokemons: data,
-      position,
+      data: data,
+      position
     });
-    // const data = await $.ajax({
-    //   url: `https://pokeapi.co/api/v2/pokemon/${id}`,
-    //   method: "GET",
-    // });
-    //const data = await response.json();
-    //return this.formatPokemon(data);
+
+    console.log(this.state);
   };
 
   render() {
