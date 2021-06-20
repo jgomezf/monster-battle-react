@@ -5,7 +5,7 @@ import { getRandomNumber } from "../utils/utils";
 import Section from "../components/Section";
 import Footer from "../components/Footer";
 
-import "../assets/styles/App.scss";
+import "../assets/styles/App.css";
 
 const App = () => {
   const [data, setPokemons] = useState([]);

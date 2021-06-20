@@ -1,7 +1,7 @@
 import React from "react";
+import "../assets/styles/App.css";
 
 const Pokemom = ({ avatar = "" }) => {
-  console.log(avatar);
   return (
     <div className="pokemon">
       <img src={avatar} />
