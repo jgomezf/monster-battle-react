@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { getRandomNumber } from "../utils/utils";
 
@@ -7,18 +7,26 @@ import Footer from "../components/Footer";
 
 import "../assets/styles/App.scss";
 
-class App extends React.Component {
-  state = {
-    pokemons: {},
-    position: 0,
-  };
+const App = () => {
+  const [data, setPokemons] = useState([]);
+  const [position, setPosition] = useState(-1);
 
-  componentDidMount() {
-    console.log("componentDidMount");
-    this.getPokemon();
+  useEffect(() => {
+    fetchPokemons();
+  }, []);
+
+  async function fetchPokemons() {
+    try {
+      const data = await Promise.all([getPokemon(), getPokemon()]);
+      const position = getRandomNumber(1, 0);
+      setPokemons(data);
+      setPosition(position);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  formatPokemon = (data) => {
+  const formatPokemon = (data) => {
     return {
       name: data.name,
       health: {
@@ -36,31 +44,23 @@ class App extends React.Component {
     };
   };
 
-  getPokemon = async () => {
+  async function getPokemon() {
     const id = getRandomNumber(898);
-    const position = getRandomNumber(1,0)
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const dataJson = await response.json();
-    const data = this.formatPokemon(dataJson);
-    this.setState({
-      data: data,
-      position
-    });
 
-    console.log(this.state);
-  };
-
-  render() {
-    return (
-      <>
-        <Section id="arena" />
-        <Section id="indicator" />
-        <Section id="panel" />
-
-        <Footer />
-      </>
-    );
+    return formatPokemon(dataJson);
   }
-}
+
+  return (
+    <>
+      <Section id="arena" data={data} />
+      {/* <Section id="indicator" pokemon={this.state.pokemons} />
+        <Section id="panel" pokemon={this.state.pokemons} /> */}
+
+      <Footer />
+    </>
+  );
+};
 
 export default App;
