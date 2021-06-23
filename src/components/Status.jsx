@@ -9,7 +9,6 @@ const Status = ({
   current = 0,
   initial = 0,
 }) => {
-  console.log(types);
   return (
     <div className="status">
       <div className="info">

@@ -4,6 +4,8 @@ import { getRandomNumber } from "../utils/utils";
 
 import Section from "../components/Section";
 import Footer from "../components/Footer";
+import Arena from "../components/Arena";
+import Indicator from "../components/Indicator";
 
 import "../assets/styles/App.css";
 
@@ -54,7 +56,12 @@ const App = () => {
 
   return (
     <>
-      <Section id="arena" data={data} />
+      <Section id="arena">
+        <Arena data={data}></Arena>
+      </Section>
+      <Section id="indicator">
+        <Indicator position= {position}></Indicator>
+      </Section>
       {/* <Section id="indicator" pokemon={this.state.pokemons} />
         <Section id="panel" pokemon={this.state.pokemons} /> */}
 
