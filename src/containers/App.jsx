@@ -6,12 +6,14 @@ import Section from "../components/Section";
 import Footer from "../components/Footer";
 import Arena from "../components/Arena";
 import Indicator from "../components/Indicator";
+import Panel from "../components/Panel";
 
 import "../assets/styles/App.css";
 
 const App = () => {
   const [data, setPokemons] = useState([]);
   const [position, setPosition] = useState(-1);
+  const [message, setMessage] = useState("What attack do you want to use?");
 
   useEffect(() => {
     fetchPokemons();
@@ -60,7 +62,14 @@ const App = () => {
         <Arena data={data}></Arena>
       </Section>
       <Section id="indicator">
-        <Indicator position= {position}></Indicator>
+        <Indicator position={position}></Indicator>
+      </Section>
+      <Section id="panel">
+        <Panel
+          position={position}
+          data={data[position]}
+          message={message}
+        ></Panel>
       </Section>
       {/* <Section id="indicator" pokemon={this.state.pokemons} />
         <Section id="panel" pokemon={this.state.pokemons} /> */}
