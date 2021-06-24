@@ -13,21 +13,21 @@ const Status = ({
     <div className="status">
       <div className="info">
         <p className="name">{`Pokemon: ${name}`}</p>
-        <ul className="types">
-          {types.map((type, idx) => {
-            return (
-              <li key={idx} className={`button ${type.name}`}>
-                {type.name}
-              </li>
-            );
-          })}
-        </ul>
-        <div className="meter">
-          <span className={`bar ${bar}`}></span>
-        </div>
-        <div className="health">
-          {current}/{initial}
-        </div>
+      </div>
+      <ul className="types">
+        {types.map((type, idx) => {
+          return (
+            <li key={idx} className={`button ${type.name}`}>
+              {type.name}
+            </li>
+          );
+        })}
+      </ul>
+      <div className="meter">
+        <span className={`bar ${bar}`}></span>
+      </div>
+      <div className="health">
+        {current}/{initial}
       </div>
     </div>
   );
