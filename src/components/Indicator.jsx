@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import PokemonContext from "../containers/PokemonContext";
 
-export default function Indicator({ position = 0 }) {
+export default function Indicator() {
+  const { position } = useContext(PokemonContext);
   return (
     <>
       <div className="column">
