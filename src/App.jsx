@@ -1,13 +1,13 @@
 import React from "react";
 
-import Section from "../components/Section";
-import Footer from "../components/Footer";
-import Arena from "./Arena";
-import Indicator from "../components/Indicator";
-import Panel from "../components/Panel";
-import { PokemonProvider } from "./PokemonContext";
+import Section from "./components/Section";
+import Footer from "./components/Footer";
+import Arena from "./containers/Arena";
+import Indicator from "./components/Indicator";
+import Panel from "./components/Panel";
+import { PokemonProvider } from "./containers/PokemonContext";
 
-import "../assets/styles/App.css";
+import "./assets/styles/App.css";
 
 const App = () => {
   return (
