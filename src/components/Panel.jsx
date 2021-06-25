@@ -4,7 +4,6 @@ import Moves from "./Moves";
 import Dialog from "./Dialog";
 
 export default function Panel({ position = 0, data = {}, message = "" }) {
-  console.log(data);
   return (
     <>
       {position === 1 ? (

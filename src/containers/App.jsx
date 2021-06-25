@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import Arena from "../components/Arena";
 import Indicator from "../components/Indicator";
 import Panel from "../components/Panel";
+import { PokemonProvider } from "../containers/PokemonContext";
+import {getPokemon} from "../api/pokemons";
 
 import "../assets/styles/App.css";
 
@@ -30,32 +32,6 @@ const App = () => {
     }
   }
 
-  const formatPokemon = (data) => {
-    return {
-      name: data.name,
-      health: {
-        initial: data.stats[0].base_stat,
-        current: data.stats[0].base_stat,
-        bar: "green",
-      },
-      avatar: data.sprites.other["official-artwork"].front_default,
-      types: data.types.map((item) => ({ name: item.type.name })),
-      moves: data.moves.slice(0, 4).map((item) => ({ name: item.move.name })),
-      _ui: {
-        bar: null,
-        health: null,
-      },
-    };
-  };
-
-  async function getPokemon() {
-    const id = getRandomNumber(898);
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    const dataJson = await response.json();
-
-    return formatPokemon(dataJson);
-  }
-
   return (
     <>
       <Section id="arena">
@@ -65,11 +41,13 @@ const App = () => {
         <Indicator position={position}></Indicator>
       </Section>
       <Section id="panel">
+        {/* <PokemonProvider> */}
         <Panel
           position={position}
           data={data[position]}
           message={message}
         ></Panel>
+        {/* </PokemonProvider> */}
       </Section>
       {/* <Section id="indicator" pokemon={this.state.pokemons} />
         <Section id="panel" pokemon={this.state.pokemons} /> */}

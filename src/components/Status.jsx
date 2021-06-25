@@ -24,7 +24,7 @@ const Status = ({
         })}
       </ul>
       <div className="meter">
-        <span className={`bar ${bar}`}></span>
+        <span className={`bar ${bar}`} style={{ width: "100%" }}></span>
       </div>
       <div className="health">
         {current}/{initial}
