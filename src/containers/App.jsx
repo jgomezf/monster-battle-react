@@ -2,7 +2,7 @@ import React from "react";
 
 import Section from "../components/Section";
 import Footer from "../components/Footer";
-import Arena from "../components/Arena";
+import Arena from "./Arena";
 import Indicator from "../components/Indicator";
 import Panel from "../components/Panel";
 import { PokemonProvider } from "./PokemonContext";

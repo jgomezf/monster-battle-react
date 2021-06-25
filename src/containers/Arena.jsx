@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
-import PokemonContext from "../containers/PokemonContext";
-import Status from "./Status";
-import Pokemon from "./Pokemon";
+import PokemonContext from "./PokemonContext";
+import Status from "../components/Status";
+import Pokemon from "../components/Pokemon";
 import { getPokemon } from "../api/pokemons";
 import { getRandomNumber } from "../utils/utils";
 
