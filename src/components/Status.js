@@ -1,4 +1,9 @@
 import React from "react";
+import Types from "./Types";
+import Info from "./Info";
+import Meter from "./Meter";
+import Health from "./Health";
+
 //style="width: 100%"
 
 import "../assets/styles/App.css";
@@ -11,24 +16,10 @@ const Status = ({
 }) => {
   return (
     <div className="status">
-      <div className="info">
-        <p className="name">{`Pokemon: ${name}`}</p>
-      </div>
-      <ul className="types">
-        {types.map((type, idx) => {
-          return (
-            <li key={idx} className={`button ${type.name}`}>
-              {type.name}
-            </li>
-          );
-        })}
-      </ul>
-      <div className="meter">
-        <span className={`bar ${bar}`} style={{ width: "100%" }}></span>
-      </div>
-      <div className="health">
-        {current}/{initial}
-      </div>
+      <Info name={name} />
+      <Types types={types} />
+      <Meter bar={bar} />
+      <Health current={current} initial={initial} />
     </div>
   );
 };
