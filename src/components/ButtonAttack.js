@@ -7,7 +7,7 @@ import {
 } from "../utils/utils";
 
 export default function ButtonAttack({ nameAttack = "" }) {
-  const { data, position, setData, setPosition, setPercentage, setMessage } =
+  const { data, position, setData, setPosition, setMessage } =
     useContext(PokemonContext);
 
   function attack() {
@@ -21,19 +21,17 @@ export default function ButtonAttack({ nameAttack = "" }) {
     const newBarColor = calculateBarColor(newPercentage);
     console.log(pokemon);
     console.log(newPercentage);
-    setPercentage(newPercentage);
 
     pokemon.health.current = newHealth;
     pokemon.health.bar = newBarColor;
-    //data[position] = pokemon;
-
-    //setData(data);
+    pokemon.health.percentage = newPercentage;
 
     if (pokemon.health.current > 0) {
       const newPosition = (position + 1) % 2;
       setPosition(newPosition);
     } else {
-      setMessage({ message: "Wins!!!" });
+      const newMessage = "Wins!!!";
+      setMessage(newMessage);
       //$("#panel .moves button").attr("disabled", "");
     }
   }

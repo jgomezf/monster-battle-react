@@ -13,12 +13,13 @@ const Status = ({
   bar = "",
   current = 0,
   initial = 0,
+  percentage = 0,
 }) => {
   return (
     <div className="status">
       <Info name={name} />
       <Types types={types} />
-      <Meter bar={bar} />
+      <Meter bar={bar} percentage={percentage} />
       <Health current={current} initial={initial} />
     </div>
   );

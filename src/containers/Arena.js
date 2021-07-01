@@ -37,6 +37,7 @@ export default function Arena() {
                   bar={p.health.bar}
                   current={p.health.current}
                   initial={p.health.initial}
+                  percentage={p.health.percentage}
                 />
                 <Pokemon avatar={p.avatar} />
               </>
@@ -49,6 +50,7 @@ export default function Arena() {
                   bar={p.health.bar}
                   current={p.health.current}
                   initial={p.health.initial}
+                  percentage={p.health.percentage}
                 />
               </>
             )}

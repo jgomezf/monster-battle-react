@@ -8,6 +8,7 @@ const formatPokemon = (data) => {
       initial: data.stats[0].base_stat,
       current: data.stats[0].base_stat,
       bar: "green",
+      percentage: 100,
     },
     avatar: data.sprites.other["official-artwork"].front_default,
     types: data.types.map((item) => ({ name: item.type.name })),
