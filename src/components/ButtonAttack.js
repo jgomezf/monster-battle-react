@@ -11,7 +11,6 @@ export default function ButtonAttack({ nameAttack = "" }) {
     useContext(PokemonContext);
 
   function attack() {
-    console.log(data);
     const attacked = (position + 1) % 2;
     const pokemon = data[attacked];
     const { newHealth, newPercentage } = calculateStatus(
@@ -22,7 +21,7 @@ export default function ButtonAttack({ nameAttack = "" }) {
     const newBarColor = calculateBarColor(newPercentage);
     console.log(pokemon);
     console.log(newPercentage);
-    setPercentage({ percentage: newPercentage });
+    setPercentage(newPercentage);
 
     pokemon.health.current = newHealth;
     pokemon.health.bar = newBarColor;
@@ -31,7 +30,8 @@ export default function ButtonAttack({ nameAttack = "" }) {
     //setData(data);
 
     if (pokemon.health.current > 0) {
-      //setPosition({ position: (position + 1) % 2 });
+      const newPosition = (position + 1) % 2;
+      setPosition(newPosition);
     } else {
       setMessage({ message: "Wins!!!" });
       //$("#panel .moves button").attr("disabled", "");
