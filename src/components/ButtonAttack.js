@@ -7,7 +7,7 @@ import {
 } from "../utils/utils";
 
 export default function ButtonAttack({ nameAttack = "" }) {
-  const { data, position, setData, setPosition, setMessage } =
+  const { data, position, setPosition, setMessage, disabled, setDisabled } =
     useContext(PokemonContext);
 
   function attack() {
@@ -19,8 +19,6 @@ export default function ButtonAttack({ nameAttack = "" }) {
       getRandomNumber(20)
     );
     const newBarColor = calculateBarColor(newPercentage);
-    console.log(pokemon);
-    console.log(newPercentage);
 
     pokemon.health.current = newHealth;
     pokemon.health.bar = newBarColor;
@@ -28,17 +26,28 @@ export default function ButtonAttack({ nameAttack = "" }) {
 
     if (pokemon.health.current > 0) {
       const newPosition = (position + 1) % 2;
+
       setPosition(newPosition);
     } else {
       const newMessage = "Wins!!!";
+      const newDisabled = "disabled";
+
       setMessage(newMessage);
-      //$("#panel .moves button").attr("disabled", "");
+      setDisabled(newDisabled);
     }
   }
 
   return (
-    <button className="button black" onClick={attack}>
-      {nameAttack}
-    </button>
+    <>
+      {disabled === "" ? (
+        <button className="button black" onClick={attack}>
+          {nameAttack}
+        </button>
+      ) : (
+        <button className="button black" onClick={attack} disabled>
+          {nameAttack}
+        </button>
+      )}
+    </>
   );
 }

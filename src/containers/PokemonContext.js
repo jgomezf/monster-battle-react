@@ -6,6 +6,7 @@ export function PokemonProvider({ children }) {
   const [data, setData] = useState([]);
   const [position, setPosition] = useState(0);
   const [message, setMessage] = useState("What attack do you want to use?");
+  const [disabled, setDisabled] = useState("");
 
   return (
     <PokemonContext.Provider
@@ -16,6 +17,8 @@ export function PokemonProvider({ children }) {
         setPosition,
         message,
         setMessage,
+        disabled,
+        setDisabled,
       }}
     >
       {children}
